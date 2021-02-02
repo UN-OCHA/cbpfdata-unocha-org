@@ -25,17 +25,6 @@
     <script type="text/javascript" src="https://unpkg.com/d3-sankey@0"></script>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-1884029-23"></script>
-    <script type="text/javascript">
-        if (document.location.hostname.search("cbpf.data.unocha.org") !== -1) {
-            window.dataLayer = window.dataLayer || [];
-
-            function gtag() {
-                dataLayer.push(arguments);
-            }
-            gtag('js', new Date());
-            gtag('config', 'UA-1884029-23');
-        }
-    </script>
     <style>
         .header {
             padding: 5px 15px;
@@ -508,6 +497,17 @@
             </symbol>
         </svg>
     </div>
+    <script type="text/javascript">
+        if (document.location.hostname.search("cbpf.data.unocha.org") !== -1) {
+            window.dataLayer = window.dataLayer || [];
+
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
+            gtag('config', 'UA-1884029-23');
+        }
+    </script>
 </body>
 
 </html>
