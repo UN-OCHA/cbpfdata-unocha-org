@@ -21,7 +21,7 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@ungap/url-search-params@0.1.2/min.min.js"></script>
     <script type="text/javascript" src="https://cbpfgms.github.io/libraries/html2canvas.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.7.0/d3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.16.0/d3.min.js" integrity="sha512-FHsFVKQ/T1KWJDGSbrUhTJyS1ph3eRrxI228ND0EGaEp6v4a/vGwPWd3Dtd/+9cI7ccofZvl/wulICEurHN1pg==" crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://unpkg.com/d3-sankey@0"></script>
     <script src="https://kit.fontawesome.com/d5d759e566.js" crossorigin="anonymous"></script>
     <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -110,9 +110,9 @@
             <button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-1" style="font-family:Montserrat, sans-serif;">
                 <ul class="nav navbar-nav ml-auto">
-                    <li class="nav-item" role="presentation"><button class="nav-link video-btn" data-toggle="modal" data-src="https://embed.fleeq.io/l/ok1ifsb74r-jjm2cqsf3d" data-target="#myModal" style="color:#146eb4;">
+                    <li class="nav-item" role="presentation"><button class="nav-link video-btn d-inline-block" data-toggle="modal" data-src="https://embed.fleeq.io/l/ok1ifsb74r-jjm2cqsf3d" data-target="#myModal" style="color:#146eb4; border-right: 1px solid #ddd;">
                         FIRST TIME TO CBPF DATA HUB <span><i class="fa fa-play-circle" style="color:#f79a3b"></i></span>
-                    </button></li>
+                    </button><a href="assets/pdf/cbpf-data-hub.pdf" class="info-pdf" alt="PFBI Background" title="PFBI Background" target="_blank"><img src="assets/img/info-pdf_icon.svg" width="13" height="13px;"></a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="dataexplorer.html" style="color:#146eb4;">DATA EXPLORER</a></li>
                     <li class="nav-item p-0" role="presentation"><a class="nav-link active" href="resources.html" style="color:#146eb4;">RESOURCES</a></li>
                 </ul>
@@ -252,6 +252,19 @@
             <div class="row">
                 <div class="col-md-10 col-lg-10 col-xl-10">
                     <main class="page landing-page">
+                        <section class="clean-block slider">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="block-heading">
+                                            <div id="anchor-3"></div>
+                                            <h2 class="text-info" id="byyear_heading">CBPF BY YEAR </h2>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="d3chartcontainercbsank" data-title="CBPF BY YEAR" data-year="2021" data-fund="all" data-responsive="true" data-lazyload="true"></div><script type="text/javascript" src="https://cbpfgms.github.io/cbsank/src/d3chartcbsank-stg.js"></script>
+			                </div>
+                        </section>
 			<section class="clean-block slider">
                             <div class="container">
                                 <div class="row">
@@ -271,7 +284,7 @@
                                 </p>    
 			    </div>
 				
-                        </section>
+            </section>
 			<section class="clean-block slider">
                             <div class="container">
                                 <div class="row">
@@ -385,7 +398,7 @@
                                         </div>
                                         <div id="d3chartcontainerpbiobe" data-title="Targeted and Reached People" data-cbpf="all" data-year="2021" data-responsive="true" data-lazyload="true"></div>
                                         <p class="text-center" style="font-size:11px; color:#aaa; padding-top: 5px; margin:0">
-                                            <b>(1)Disclaimer:</b> Figures for people targeted may include double counting as same people may receive assistance from multiple cluster/sectors/projects.<br>
+                                            <b>(1)Disclaimer:</b> Figures for people targeted may include double counting as same people may receive assistance from multiple clusters/sectors/projects.<br>
                                         </p>
 
                                     </div>
@@ -425,43 +438,9 @@
             <div class="row">
                 <div class="col-12 justify-content-center align-content-center">
                     <h2 class="text-center" data-toc-skip style="margin: 25px 0; font-weight: 600;">CBPF Donors</h2>
-                    <ul class="donor-flags-list">
-                        <li><img src="https://www.unocha.org/sites/all/modules/custom/ocha_oct/flags/Australia.png" width="30px">Australia</li>
-                            <li><img src="https://www.unocha.org/sites/all/modules/custom/ocha_oct/flags/Azerbaijan.png" width="30px">Azerbaijan</li>
-                            <li><img src="https://www.unocha.org/sites/all/modules/custom/ocha_oct/flags/Belgium.png" width="30px">Belgium</li>
-                            <li><img src="https://www.unocha.org/sites/all/modules/custom/ocha_oct/flags/Canada.png" width="30px">Canada</li>
-                            <li><img src="https://www.unocha.org/sites/all/modules/custom/ocha_oct/flags/Cyprus.png" width="30px">Cyprus</li>
-                            <li><img src="https://www.unocha.org/sites/all/modules/custom/ocha_oct/flags/Czech Republic.png" width="30px">Czech Republic</li>
-                            <li><img src="https://www.unocha.org/sites/all/modules/custom/ocha_oct/flags/Denmark.png" width="30px">Denmark</li>
-                            <li><img src="https://www.unocha.org/sites/all/modules/custom/ocha_oct/flags/Estonia.png" width="30px">Estonia</li>
-                            <li><img src="https://www.unocha.org/sites/all/modules/custom/ocha_oct/flags/France.png" width="30px">France</li>
-                            <li><img src="https://www.unocha.org/sites/all/modules/custom/ocha_oct/flags/Germany.png" width="30px">Germany</li>
-                            <li><img src="https://www.unocha.org/sites/all/modules/custom/ocha_oct/flags/Iceland.png" width="30px">Iceland</li>
-                            <li><img src="https://www.unocha.org/sites/all/modules/custom/ocha_oct/flags/Ireland.png" width="30px">Ireland</li>
-                            <li><img src="https://www.unocha.org/sites/all/modules/custom/ocha_oct/flags/Italy.png" width="30px">Italy</li>
-			    <li><img src="https://www.unocha.org/sites/all/modules/custom/ocha_oct/flags/Japan.png" width="30px">Japan</li>
-                            <li><img src="/assets/img/Jersey.png" width="30px">Jersey</li>
-                            <li><img src="https://www.unocha.org/sites/all/modules/custom/ocha_oct/flags/Korea%2C%20Republic%20of.png" width="30px">Korea, Republic of</li>
-                            <li><img src="https://www.unocha.org/sites/all/modules/custom/ocha_oct/flags/Kuwait.png" width="30px">Kuwait</li>
-                            <li><img src="https://www.unocha.org/sites/all/modules/custom/ocha_oct/flags/Lithuania.png" width="30px">Lithuania</li>
-                            <li><img src="https://www.unocha.org/sites/all/modules/custom/ocha_oct/flags/Luxembourg.png" width="30px">Luxembourg</li>
-                            <li><img src="https://www.unocha.org/sites/all/modules/custom/ocha_oct/flags/Malaysia.png" width="30px">Malaysia</li>
-                            <li><img src="https://www.unocha.org/sites/all/modules/custom/ocha_oct/flags/Malta.png" width="30px">Malta</li>
-                            <li><img src="https://www.unocha.org/sites/all/modules/custom/ocha_oct/flags/Monaco.png" width="30px">Monaco</li>
-                            <li><img src="https://www.unocha.org/sites/all/modules/custom/ocha_oct/flags/Netherlands.png" width="30px">Netherlands</li>
-                            <li><img src="https://www.unocha.org/sites/all/modules/custom/ocha_oct/flags/New Zealand.png" width="30px">New Zealand</li>
-                            <li><img src="https://www.unocha.org/sites/all/modules/custom/ocha_oct/flags/Norway.png" width="30px">Norway</li>
-                            <li><img src="https://www.unocha.org/sites/all/modules/custom/ocha_oct/flags/Philippines.png" width="30px">Philippines</li>
-                            <li><img src="https://www.unocha.org/sites/all/modules/custom/ocha_oct/flags/Poland.png" width="30px">Poland</li>
-                            <li><img src="https://www.unocha.org/sites/all/modules/custom/ocha_oct/flags/Qatar.png" width="30px">Qatar</li>
-                            <li><img src="https://www.unocha.org/sites/all/modules/custom/ocha_oct/flags/Spain.png" width="30px">Spain</li>
-                            <li><img src="https://www.unocha.org/sites/all/modules/custom/ocha_oct/flags/Sweden.png" width="30px">Sweden</li>
-                            <li><img src="https://www.unocha.org/sites/all/modules/custom/ocha_oct/flags/Switzerland.png" width="30px">Switzerland</li>
-                            <li><img src="https://www.unocha.org/sites/all/modules/custom/ocha_oct/flags/Ukraine.png" width="30px">Ukraine</li>
-                            <li><img src="https://www.unocha.org/sites/all/modules/custom/ocha_oct/flags/United%20Kingdom.png" width="30px">United Kingdom</li>
-                            <li><img src="https://www.unocha.org/sites/all/modules/custom/ocha_oct/flags/United%20States.png" width="30px">United States</li>
-                            <div style="clear: both"></div>
-                    </ul>
+                    <h4 class="text-center" id="flags-total"></h4>
+                    <div class="donor-flags-list"></div>
+                    <div style="clear: both"></div>
                 </div>
             </div>
         </div>
@@ -887,6 +866,7 @@
 	    $.getScript("https://cbpfgms.github.io/pbinad/src/d3chartpbinad-stg.js", function() {});
         }
     </script>
+    <script type="text/javascript" src="assets/js/flags.js"></script>
 </body>
 
 </html>
