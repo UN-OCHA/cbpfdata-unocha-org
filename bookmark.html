@@ -64,6 +64,7 @@
 	<div class="container">
             <div class="row">
                 <div class="col-md-12">
+                    <div id="d3chartcontainercbsank" data-title="CBPF BY YEAR" data-year="2021" data-fund="all" data-responsive="true" data-lazyload="true"></div>
                     <div id="d3chartcontainerpbiclc" data-year="2020" data-contribution="total" data-responsive="true" data-lazyload="true"></div>
                     <div id="d3chartcontainerpbicli" data-showfuture="true" data-responsive="true"></div>
                     <div id="d3chartcontainerpbialp" data-year="2020" data-partner="total" data-showaverage="true" data-responsive="true" data-lazyload="true"></div>
@@ -98,6 +99,9 @@
                 if (x === "contributions") {
                     fileSrc = "https://cbpfgms.github.io/pbiclc/src/d3chartpbiclc.js";
                     includeJsFile(fileSrc);
+                } else if (x === "sankey") {
+                    fileSrc = "https://cbpfgms.github.io/cbsank/src/d3chartcbsank.js";
+                    includeJsFile(fileSrc);
                 } else if (x === "contribution-trends") {
                     fileSrc = "https://cbpfgms.github.io/pbicli/src/d3chartpbicli.js";
                     includeJsFile(fileSrc);
@@ -125,7 +129,7 @@
                 } else if (x === "cbpfvshrp") {
                     fileSrc = "https://cbpfgms.github.io/pbihrp/src/d3chartpbihrp.js";
                     includeJsFile(fileSrc);
-		} else if (x === "covid19") {
+	            } else if (x === "covid19") {
                     fileSrc = "https://cbpfgms.github.io/covmap/src/d3chartcovmap.js";
                     includeJsFile(fileSrc);
                 } else if (x === "netfunding") {
