@@ -24,8 +24,6 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
     <script type="text/javascript" src="https://unpkg.com/d3-sankey@0"></script>
     <script src="https://kit.fontawesome.com/d5d759e566.js" crossorigin="anonymous"></script>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-1884029-23"></script>
     <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="https://cbpfgms.github.io/css/d3chartstyles.css">
     <link rel="stylesheet" type="text/css" href="https://cbpfgms.github.io/css/d3chartstylescbsank.css">
@@ -853,12 +851,6 @@
     <script type="text/javascript">
         if (document.location.hostname.search("cbpf.data.unocha.org") !== -1) {
             window.dataLayer = window.dataLayer || [];
-
-            function gtag() {
-                dataLayer.push(arguments);
-            }
-            gtag('js', new Date());
-            gtag('config', 'UA-1884029-23');
             $.getScript("https://cbpfgms.github.io/cbsank/src/d3chartcbsank.js", function() {});
             $.getScript("https://cbpfgms.github.io/pbiclc/src/d3chartpbiclc.js", function() {});
             $.getScript("https://cbpfgms.github.io/pbicli/src/d3chartpbicli.js", function() {});
