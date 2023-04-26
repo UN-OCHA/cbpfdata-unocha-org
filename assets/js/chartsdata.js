@@ -30,6 +30,13 @@ const filesURLs = [{
 	format: "json",
 	usedBy: ["cbsank"]
 }, {
+	name: "flags60",
+	url: "https://cbpfgms.github.io/img/assets/flags60.json",
+	rowFunction: d3.autoType,
+	format: "json",
+	usedBy: ["pbiflags"],
+	dataFilters: null
+}, {
 	name: "launchedAllocationsData",
 	url: "https://cbpfapi.unocha.org/vo2/odata/AllocationTypes?PoolfundCodeAbbrv=&$format=csv",
 	rowFunction: d3.autoType,
