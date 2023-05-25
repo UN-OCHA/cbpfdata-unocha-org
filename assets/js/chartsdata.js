@@ -35,7 +35,7 @@ const ipNames = ["ingo", "ngo", "o", "un"],
 	maxDonorId = 250,
 	maxFundId = 300;
 
-const localStorageTime = 3600000,
+const localStorageTime = 600000,
 	currentDate = new Date(),
 	isPfbiSite = window.location.hostname === "cbpf.data.unocha.org",
 	consoleStyle = "background-color: #0d6cb6; color: white; padding: 2px;";
@@ -396,7 +396,7 @@ const filesURLs = [
 			},
 			{
 				name: "PledgeAmtLocalCurrency",
-				type: "string",
+				type: t => typeof t === "string" || t === null, //the value must be either a string or null
 				filterFunction: null,
 			},
 			{
@@ -406,7 +406,7 @@ const filesURLs = [
 			},
 			{
 				name: "PaidAmtLocalCurrency",
-				type: "string",
+				type: t => typeof t === "string" || t === null, //the value must be either a string or null
 				filterFunction: null,
 			},
 			{
