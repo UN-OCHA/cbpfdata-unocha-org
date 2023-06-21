@@ -1,3 +1,4 @@
+/* global d3 */
 //using a global object for sharing data
 window.cbpfbiDataObject = {};
 
@@ -55,6 +56,14 @@ const filesURLs = [
 		autoType: false,
 		format: "json",
 		usedBy: ["cbsank"],
+		dataFilters: null,
+	},
+	{
+		name: "masterRegionalFunds",
+		url: "https://cbpfgms.github.io/pfbi-data/mst/MstRhpf.json",
+		autoType: false,
+		format: "json",
+		usedBy: ["pbiclc", "pbialp", "pbifdc", "pbigam", "pbihrp"],
 		dataFilters: null,
 	},
 	{
