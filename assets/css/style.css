@@ -1462,15 +1462,21 @@ a.cd-footer-social__link:hover .hover-style {
     width: 160px;
 }
 
-.cbpf-hrp {
+.progress-dashbrd {
     position: absolute;
     top: 415px;
     width: 160px;
 }
 
-.cpf-overview {
+.cbpf-hrp {
     position: absolute;
     top: 440px;
+    width: 160px;
+}
+
+.cpf-overview {
+    position: absolute;
+    top: 465px;
     width: 160px;
 }
 
@@ -1479,7 +1485,7 @@ a.cd-footer-social__link:hover .hover-style {
     width: 100%;
 }
 
-.allocation-overview span, .result-dashbrd span, .cbpf-hrp span, .cpf-overview span{
+.allocation-overview span, .result-dashbrd span, .progress-dashbrd span, .cbpf-hrp span, .cpf-overview span{
     background: #5392cb;
     border: 1px solid #5392cb;
     font-size: 11px;
@@ -1490,7 +1496,7 @@ a.cd-footer-social__link:hover .hover-style {
     transition: .3s ease-out;
 }
 
-.allocation-overview a:hover, .result-dashbrd a:hover, .cbpf-hrp a:hover, .cpf-overview a:hover{
+.allocation-overview a:hover, .result-dashbrd a:hover, .progress-dashbrd a:hover, .cbpf-hrp a:hover, .cpf-overview a:hover{
     text-decoration: none
 }
 
@@ -1501,7 +1507,7 @@ a.cd-footer-social__link:hover .hover-style {
     background: #32659a;
 }
 
-.cpf-overview a:hover span, .result-dashbrd a:hover span, .cbpf-hrp a:hover span, .cpf-overview a:hover span {
+.cpf-overview a:hover span, .result-dashbrd a:hover span, .progress-dashbrd a:hover span, .cbpf-hrp a:hover span, .cpf-overview a:hover span {
     color: #fff;
     text-decoration: none;
     border: 1px solid #32659a;
@@ -2184,4 +2190,25 @@ td:nth-of-type(6) {
      ". . . . . . . . . . . . . . . . . . . . "
      ". . . . . . . . . . . . . . . . . . . . "
      ". . . . . . . . . . . . . . . . . . . . "
+}
+#alloc-prog-dash .modal-dialog {
+    max-width: max-content;
+}
+#alloc-prog-dash .modal-content {
+    background-color: #dfdfdf;
+    max-width: max-content;
+}
+#alloc-prog-dash .modal-body img {margin-right: 13px;}
+#alloc-prog-dash .close-panel .close {
+    font-size: 1.8rem;
+    font-weight: 600;
+    line-height: 1;
+    color: #bbb;   
+    right:0;
+    background-color: #fff;
+    border-radius: 50%;
+    padding: 2px 8px;
+    margin: 15px;
+    box-shadow: 0px 0px 6px -1px rgba(0,0,0,0.10);
+    outline: none;
 }
