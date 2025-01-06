@@ -21,6 +21,7 @@ const ipNames = ["ingo", "ngo", "o", "un"],
 		"multi-sector",
 		"protection",
 		"water sanitation hygiene",
+		"water, sanitation and hygiene",
 		"food security",
 		"early recovery",
 		"nutrition",
@@ -92,7 +93,7 @@ const filesURLs = [
 	},
 	{
 		name: "launchedAllocationsData",
-		url: "https://cbpfapi.unocha.org/vo2/odata/AllocationTypes?PoolfundCodeAbbrv=&$format=csv",
+		url: "https://cbpfapi.unocha.org/vo2/odata/AllocationTypes?PoolfundCodeAbbrv=&FundTypeId=1&$format=csv",
 		autoType: true,
 		format: "csv",
 		usedBy: ["cbsank", "pbinad", "pbialp", "pbiuac", "pbiolc", "pbigam"],
@@ -104,7 +105,7 @@ const filesURLs = [
 			},
 			{
 				name: "AllocationSummary",
-				type: "string",
+				type: t => t === null || typeof t === "string",
 				filterFunction: null,
 			},
 			{
@@ -777,6 +778,6 @@ function verifyRow(obj, dataFilter, url, autoType) {
 	return autoType ? copiedObj : obj;
 }
 
-function stringifyFunction(key, value) {
+function stringifyFunction(_, value) {
 	return typeof value === "function" ? value.toString() : value;
 }
