@@ -151,7 +151,7 @@ const filesURLs = [
 			},
 			{
 				name: "HRPPlans",
-				type: "string",
+				type: t => typeof t === "string" || t === null,
 				filterFunction: null,
 			},
 			{
