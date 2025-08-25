@@ -10,25 +10,23 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab"> 
-	<link rel="stylesheet" href="assets/css/Highlight-Phone.css">
 	<link rel="stylesheet" href="assets/css/style.css">
 	<style>
 		svg{background-color: transparent}
 	</style>
-	<!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-		new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-		j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-		'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-		})(window,document,'script','dataLayer','GTM-MFQ9DZ9');</script>
-		<!-- End Google Tag Manager -->
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-1884029-23"></script>
+    <script type="text/javascript">
+    if (document.location.hostname.search("cbpf.data.unocha.org") !== -1) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-1884029-23');
+    }
+    </script>
 </head>
 
 <body>
-	<!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MFQ9DZ9"
-		height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-		<!-- End Google Tag Manager (noscript) -->
 	<header class="cd-header">
 	<div class="cd-global-header">
 		<div class="container">
@@ -91,11 +89,9 @@
             <button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navcol-1" style="font-family:Montserrat, sans-serif;">
                     <ul class="nav navbar-nav ml-auto">
-						<li class="nav-item" role="presentation"><button class="nav-link video-btn d-inline-block" data-toggle="modal" data-src="https://embed.fleeq.io/l/ok1ifsb74r-jjm2cqsf3d" data-target="#myModal" style="color:#146eb4; border-right: 1px solid #ddd;">
-							FIRST TIME TO CBPF DATA HUB <span><i class="fa fa-play-circle" style="color:#f79a3b"></i></span>
-						</button><a href="assets/pdf/cbpf-data-hub.pdf" class="info-pdf" alt="PFBI Background" title="PFBI Background" target="_blank"><img src="assets/img/info-pdf_icon.svg" width="13" height="13px;"></a></li>
-						<li class="nav-item" role="presentation"><a class="nav-link" href="allocations-overview.html" style="color:#146eb4;">ALLOCATIONS OVERVIEW</a></li>
-						<li class="nav-item" role="presentation"><a class="nav-link" href="dataexplorer.html" style="color:#146eb4;">DATA EXPLORER</a></li>
+						<li class="nav-item" role="presentation"><a class="nav-link active" href="index.html" style="color:#146eb4;">HOME</a></li>
+                        <li class="nav-item" role="presentation"><a class="nav-link" href="dataexplorer.html" style="color:#146eb4;">DATA EXPLORER</a></li>
+                        <li class="nav-item" role="presentation"><a class="nav-link active" href="resources.html" style="color:#146eb4;">RESOURCES</a></li>
                     </ul>
                 </div>
         </div>
@@ -230,16 +226,16 @@
         </div>
     </div>
     <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/bootstrap-dropdown.js"></script>
     <script src="assets/js/custom-menu.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-	<script src="assets/js/breaking-news-ticker.min.js"></script>
     <script src="assets/js/theme.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
-	<script type="text/javascript">
+    <script type="text/javascript">
 		
     if (document.location.hostname.search("cbpf.data.unocha.org") !== -1) {
         window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-1884029-23');
 		$.getScript("https://cbpfgms.github.io/pbimap/src/d3chartpbimap.js", function() {});
     } 
 	else{
