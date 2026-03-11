@@ -8,7 +8,24 @@ var yearToShowDataOnLoad = 2026;
 $(function() {
     $('.annualHeading__2uJLv').text(yearToShowDataOnLoad);
 
-    LoadCBPFSummary(yearToShowDataOnLoad);
+    // Wait for cbpfbiDataObject (preloaded by chartsdata.js) before loading summary
+	function runWhenAllocationDataReady(fn) {
+		var dataPromise =
+			window.cbpfbiDataObject &&
+			window.cbpfbiDataObject.launchedAllocationsData;
+		if (dataPromise && typeof dataPromise.then === "function") {
+			dataPromise.then(fn);
+		} else if (window.cbpfbiDataObject) {
+			fn();
+		} else {
+			setTimeout(function () {
+				runWhenAllocationDataReady(fn);
+			}, 50);
+		}
+	}
+	runWhenAllocationDataReady(function () {
+		LoadCBPFSummary(yearToShowDataOnLoad);
+	});
     changedYear = yearToShowDataOnLoad;
 
     $(window).scroll(function() {
@@ -32,17 +49,17 @@ $(function() {
 });
 
 //Previous button click
-$('.previous__39nbE').click(function() {
-
+$(".previous__39nbE").click(function () {
+	if (changedYear == 0) changedYear = currentyear;
     if (changedYear == 0)
         changedYear = currentyear;
 
-    var objBtnNext;
-    if ($('.next__d5jll').length > 0) {
-        objBtnNext = $('.next__d5jll');
-    } else {
-        objBtnNext = $('.inActiveNext__2RFMJ');
-    }
+	var objBtnNext;
+	if ($(".next__d5jll").length > 0) {
+		objBtnNext = $(".next__d5jll");
+	} else {
+		objBtnNext = $(".inActiveNext__2RFMJ");
+	}
 
     if (changedYear > minYear) {
         changedYear = changedYear - 1;
@@ -101,40 +118,80 @@ $('.next__d5jll').click(function() {
     }
 });
 
+function fetchAllocationTotalByYear(allocYear) {
+	function sumFromRows(rows) {
+		var sum = 0;
+		(rows || []).forEach(function (row) {
+			var year =
+				typeof row.AllocationYear === "number"
+					? row.AllocationYear
+					: parseInt(row.AllocationYear, 10);
+			if (year === allocYear && row.TotalUSDPlanned != null) {
+				sum +=
+					typeof row.TotalUSDPlanned === "number"
+						? row.TotalUSDPlanned
+						: parseFloat(row.TotalUSDPlanned) || 0;
+			}
+		});
+		return sum;
+	}
+
+	// Use preloaded data from cbpfbiDataObject (populated by chartsdata.js)
+	var dataPromise =
+		window.cbpfbiDataObject &&
+		window.cbpfbiDataObject.launchedAllocationsData;
+	if (dataPromise && typeof dataPromise.then === "function") {
+		return dataPromise.then(sumFromRows);
+	}
+	// Data not yet available (e.g. chartsdata.js not loaded)
+	return Promise.resolve(0);
+}
+
 function LoadCBPFSummary(allocYear) {
-    showLoader();
-    fetch('https://cbpfapi.unocha.org/vo2/odata/CBPFSummary?allocationYear=' + allocYear)
-        .then(function(response) {
-            if (response.ok) {
-                response.json().then(function(data) {
-                    //$div1_.textContent = JSON.stringify(data);
-                    var obj = data;
-                    if ($donors_ != null)
-                        $donors_.textContent = obj.donors;
+	showLoader();
+	Promise.all([
+		fetch(
+			"https://cbpfapi.unocha.org/vo2/odata/CBPFSummary?allocationYear=" +
+				allocYear,
+		).then(function (response) {
+			if (response.ok) return response.json();
+			return null;
+		}),
+		fetchAllocationTotalByYear(allocYear),
+	])
+		.then(function (results) {
+			var obj = results[0];
+			var allocationTotal = results[1];
 
-                    if ($partnersFunded_ != null)
-                        $partnersFunded_.textContent = obj.partnersFunded;
+			if (obj != null) {
+				if ($donors_ != null) $donors_.textContent = obj.donors;
 
-                    if ($projects_ != null)
-                        $projects_.textContent = obj.projectsFunded;
+				if ($partnersFunded_ != null)
+					$partnersFunded_.textContent = obj.partnersFunded;
 
-                    if ($contributions_ != null)
-                        $contributions_.textContent = '$' + formatNumber(obj.contribTotalAmt);
+				if ($projects_ != null)
+					$projects_.textContent = obj.projectsFunded;
 
-                    if ($allocations_ != null)
-                        $allocations_.textContent = '$' + formatNumber(obj.allocAmt);
+				if ($contributions_ != null)
+					$contributions_.textContent =
+						"$" + formatNumber(obj.contribTotalAmt);
 
-                    if ($underApproval_ != null)
-                        $underApproval_.textContent = '$' + formatNumber(obj.underApprovalAmt);
-                });
-            } else console.log('Network response was not ok.');
+				if ($underApproval_ != null)
+					$underApproval_.textContent =
+						"$" + formatNumber(obj.underApprovalAmt);
+			}
 
-            hideLoader();
-        })
-        .catch(function(error) {
-            hideLoader();
-            console.log('Fetch error: ');
-        });
+			if ($allocations_ != null)
+				$allocations_.textContent =
+					"$" + formatNumber(allocationTotal);
+		})
+		.finally(function () {
+			hideLoader();
+		})
+		.catch(function (error) {
+			hideLoader();
+			console.log("Fetch error: ", error);
+		});
 }
 
 function showLoader() {
@@ -232,22 +289,22 @@ let $underApproval_ = document.querySelector('#underApprovalFig');
 let $updatedOn_ = document.querySelector('#updatedOn');
 let $allocationYear = document.querySelector('.annualHeading__2uJLv');
 
-var yearToShowDataOnLoad = 2026;
-
-fetch('https://cbpfapi.unocha.org/vo2/odata/LastModified')
-    .then(function(response) {
-        if (response.ok) {
-            response.json().then(function(data) {
-                //$div1_.textContent = JSON.stringify(data);
-                var obj = data;
-                if ($updatedOn_ != undefined && $updatedOn_ != null)
-                    $updatedOn_.textContent = ConvertJsonDateTime(obj.value[0].last_updated_date);
-            });
-        } else console.log('Network response was not ok.');
-    })
-    .catch(function(error) {
-        console.log('Fetch error: ');
-    });
+fetch("https://cbpfapi.unocha.org/vo2/odata/LastModified")
+	.then(function (response) {
+		if (response.ok) {
+			response.json().then(function (data) {
+				//$div1_.textContent = JSON.stringify(data);
+				var obj = data;
+				if ($updatedOn_ != undefined && $updatedOn_ != null)
+					$updatedOn_.textContent = ConvertJsonDateTime(
+						obj.value[0].last_updated_date,
+					);
+			});
+		} else console.log("Network response was not ok.");
+	})
+	.catch(function (error) {
+		console.log("Fetch error: ");
+	});
 
 function ConvertJsonDateTime(jsonDate) {
     var date = new Date(jsonDate);
