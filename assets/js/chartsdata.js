@@ -192,7 +192,7 @@ const filesURLs = [
 	},
 	{
 		name: "contributionsData",
-		url: "https://cbpfgms.github.io/pfbi-data/contributionSummarySankey.csv",
+		url: "https://pfbi-webjob-contribution-prod-g7b3h4b9ftfahnbk.eastus2-01.azurewebsites.net/download/loadContribution/contributionSummarySankey.csv",
 		autoType: true,
 		format: "csv",
 		usedBy: ["cbsank"],
